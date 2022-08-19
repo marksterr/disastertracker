@@ -1,7 +1,14 @@
 import GoogleMapReact from 'google-map-react'
 import LocationPoint from './LocationPoint'
 
-const Map = ({ center, zoom }) => {
+const Map = ({ eventData, center, zoom }) => {
+  const points = eventData.map(ev => {
+    if(ev.categories[0].id == 'wildfires') {
+      return <LocationPoint lat={ev.geometry[0].coordinates[1]} lng={ev.geometry[0].coordinates[0]}/>
+    }
+    return null
+  })
+
   return (
     <div className="map">
       <GoogleMapReact
@@ -9,7 +16,7 @@ const Map = ({ center, zoom }) => {
         defaultCenter={ center } 
         defaultZoom={ zoom }
       >
-        <LocationPoint lat={center.lat} lng={center.lng}/>
+        {points}
       </GoogleMapReact>
     </div>
   )
