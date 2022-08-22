@@ -1,10 +1,15 @@
+import { useState } from 'react'
 import GoogleMapReact from 'google-map-react'
 import LocationPoint from './LocationPoint'
+import InfoBox from './InfoBox'
 
 const Map = ({ eventData, center, zoom }) => {
+  const [locationInfo, setLocationInfo] = useState(null)
+
   const points = eventData.map(ev => {
-    if(ev.categories[0].id == 'wildfires') {
-      return <LocationPoint lat={ev.geometry[0].coordinates[1]} lng={ev.geometry[0].coordinates[0]}/>
+    if(ev.categories[0].id == 'volcanoes') {
+      return <LocationPoint lat={ev.geometry[0].coordinates[1]} lng={ev.geometry[0].coordinates[0]}
+      onClick={() => setLocationInfo({ id: ev.id, title: ev.title })}/>
     }
     return null
   })
@@ -18,6 +23,7 @@ const Map = ({ eventData, center, zoom }) => {
       >
         {points}
       </GoogleMapReact>
+      {locationInfo && <InfoBox info={locationInfo}/>}
     </div>
   )
 }

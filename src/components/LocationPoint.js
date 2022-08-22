@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react'
-import locationIcon from '@iconify/icons-mdi/cloud-alert'
+import locationIcon from '@iconify/icons-mdi/volcano'
 
 const LocationPoint = ({ lat, lng, onClick }) => {
   return (
