@@ -9,7 +9,13 @@ const Map = ({ eventData, center, zoom }) => {
   const points = eventData.map(ev => {
     if(ev.categories[0].id == 'volcanoes') {
       return <LocationPoint lat={ev.geometry[0].coordinates[1]} lng={ev.geometry[0].coordinates[0]}
-      onClick={() => setLocationInfo({ id: ev.id, title: ev.title })}/>
+      onClick={() => setLocationInfo({ id: ev.id, title: ev.title })} symbol={'volcano'}/>
+    } else if (ev.categories[0].id == 'wildfires') {
+      return <LocationPoint lat={ev.geometry[0].coordinates[1]} lng={ev.geometry[0].coordinates[0]}
+      onClick={() => setLocationInfo({ id: ev.id, title: ev.title })} symbol={'fire'}/>
+    } else {
+      return <LocationPoint lat={ev.geometry[0].coordinates[1]} lng={ev.geometry[0].coordinates[0]}
+      onClick={() => setLocationInfo({ id: ev.id, title: ev.title })} symbol={'storm'}/>
     }
     return null
   })

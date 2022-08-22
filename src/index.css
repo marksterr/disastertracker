@@ -32,9 +32,19 @@ body {
   padding: 5px 0;
 }
 
-.location-marker {
+.location-marker-volcano {
   font-size: 2rem;
-  color: red;
+  color: rgb(134, 0, 0);
+}
+
+.location-marker-fire {
+  font-size: 2rem;
+  color: orangered;
+}
+
+.location-marker-storm {
+  font-size: 2rem;
+  color: yellow;
 }
 
 .loader {
