@@ -1,5 +1,5 @@
 {
-  "name": "stormtracker",
+  "name": "disastertracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
